@@ -9,6 +9,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 import { Search } from "../components/search.component";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FavouritesBar } from "../../../components/favourite/favourites-bar.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 const ReastaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -46,6 +47,7 @@ const RestaurantsScreen = ({ navigation }) => {
       {isToggled && (
         <FavouritesBar favourites={favourites} onDetail={navigation.navigate} />
       )}
+
       <ReastaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -58,12 +60,14 @@ const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );
         }}
-        keyExtractor={item => item.name}
+        keyExtractor={(item) => item.name}
       />
     </SafeArea>
   );
