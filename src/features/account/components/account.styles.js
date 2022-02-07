@@ -20,14 +20,14 @@ export const AccountCover = styled.View`
 
 export const AccountContainer = styled.View`
   background-color: rgba(255, 255, 255, 0.7);
-  padding: ${props => props.theme.space[4]};
-  margin-top: ${props => props.theme.space[2]};
+  padding: ${(props) => props.theme.space[4]};
+  margin-top: ${(props) => props.theme.space[2]};
 `;
 
 export const AuthButton = styled(Button).attrs({
   color: colors.brand.primary,
 })`
-  padding: ${props => props.theme.space[2]};
+  padding: ${(props) => props.theme.space[2]};
 `;
 
 export const AuthInput = styled(TextInput)`
@@ -42,10 +42,18 @@ export const ErrorContainer = styled.View`
   max-width: 300px;
   align-items: center;
   align-self: center;
-  margin-top: ${props => props.theme.space[2]};
-  margin-bottom: ${props => props.theme.space[2]};
+  margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
 export const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
+`;
+
+export const AnimationWrapper = styled.View`
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  top: 30px;
+  padding: ${(props) => props.theme.space[2]};
 `;

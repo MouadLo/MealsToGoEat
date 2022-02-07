@@ -8,6 +8,7 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+
 import {
   API_KEY,
   AUTh_DOMAIN,
@@ -16,14 +17,18 @@ import {
   MESSAGING_SENDER_ID,
   APP_ID,
 } from "@env";
+
 import { theme } from "./src/infrastructure/theme";
 import { Navigation } from "./src/infrastructure/navigation";
-
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
+LogBox.ignoreLogs([
+  "Warning: Async Storage has been extracted from react-native core",
+]);
+
 const firebaseConfig = {
   apiKey: API_KEY,
   authDomain: AUTh_DOMAIN,
@@ -38,8 +43,6 @@ if (!getApps().length) {
 }
 
 export default function App() {
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -52,14 +55,11 @@ export default function App() {
     return null;
   }
 
-  // if (!isAuthenticated) {
-  //   return null;
-  // }
   return (
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          {/* <Navigation /> */}
+          <Navigation />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
